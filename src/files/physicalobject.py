@@ -77,10 +77,18 @@ class PhysicalObject(pyglet.sprite.Sprite):
         min_y = self.image.height/2
         max_x = 800 - self.image.width/2
         max_y = 600 - self.image.height/2
-        if self.x < min_x: self.vx = -1*self.vx
-        if self.x > max_x: self.vx = -1*self.vx
-        if self.y < min_y: self.vy = -1*self.vy
-        if self.y > max_y: self.vy = -1*self.vy
+        if self.x < min_x:
+            self.x = min_x
+            self.vx = -1*self.vx
+        if self.x > max_x:
+            self.x = max_x
+            self.vx = -1*self.vx
+        if self.y < min_y:
+            self.y = min_y
+            self.vy = -1*self.vy
+        if self.y > max_y:
+            self.y = max_y
+            self.vy = -1*self.vy
 
     def collides_with(self, other_object):
         """Determine if this object collides with another"""
